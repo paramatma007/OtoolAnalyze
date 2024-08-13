@@ -22,7 +22,7 @@ app_binary_path = os.path.realpath(file_path)
 
 #Check if provided file can be analyzed
 file_check = subprocess.getoutput("file " + app_binary_path)
-if "Mach-O" in  file_check:
+if "Mach-O" in file_check:
     print("\033[95m {}\033[00m".format("Analyzing our target iOS application binary."))
 else:
     print("\033[91m {}\033[00m".format("Provided app binary is not suitable for analysis."))
