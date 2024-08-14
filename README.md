@@ -4,8 +4,8 @@ Hey Everyone! Welcome to my Tools repo. This is where I'll be sharing scripts th
 
 ## otool_analyze
 
-This script is developed to help us perform Reverse Engineering of an iOS application, specifically in static analysis of an IPA file for detecting common security misconfigurations. We can complete a small portion of a very complex area in Cyber Security through this script - iOS Application Penetration Testing.
-This script performs the following checks:
+This script is developed to help us perform Reverse Engineering of an iOS application, specifically the static analysis of an IPA file for detecting common security misconfigurations. We can complete a small portion of a very complex area in Cyber Security through this script - iOS Application Penetration Testing.
+Following checks are performed by the script:
 1. Address Space Layout Randomization (ASLR)
 2. Stack Smashing Protection
 3. Automatic Reference Counting (ARC)
@@ -14,6 +14,7 @@ This script performs the following checks:
 6. Insecure Random Number Generator Functions
 7. Insecure Malloc Function
 8. Deprecated Objective-C APIs
+Refer to the links in the References section to get a detailed understanding of above checks.
 
 ### Dependencies
 
