@@ -69,9 +69,9 @@ random_func_check = subprocess.getoutput("otool -Iv " + app_binary_path + " | gr
 srand_func_check = subprocess.getoutput("otool -Iv " + app_binary_path + " | grep -w '_srand'")
 rand_func_check = subprocess.getoutput("otool -Iv " + app_binary_path + " | grep -w '_rand'")
 if "_random" in random_func_check or "_srand" in srand_func_check or "_rand" in rand_func_check:
-    print('[+] Insecure Random functions present:', "\033[92m {}\033[00m" .format('Yes'), sep=' ')
+    print('[+] Insecure Random Number Generator functions present:', "\033[92m {}\033[00m" .format('Yes'), sep=' ')
 else:
-    print('[+] Insecure Random functions present:', "\033[91m {}\033[00m" .format('No'), sep=' ')
+    print('[+] Insecure Random Number Generator functions present:', "\033[91m {}\033[00m" .format('No'), sep=' ')
 
 #Check 7: Does the iOS app binary use insecure malloc function?
 malloc_check = subprocess.getoutput("otool -Iv " + app_binary_path + " | grep -w '_malloc'")
