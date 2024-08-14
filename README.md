@@ -20,14 +20,14 @@ Refer to the links in the References section to get a detailed understanding of 
 
 ### Dependencies
 
-* otool
+* otool (Part of XCode's command line tools)
 * python3
 * MacOS
 * iOS Application's IPA file
 
 ### Preparation and Execution
 
-* The script can be downloaded directly and should work as long as above dependencies have been taken care of. Rename the iPA file from '.ipa' extension to '.zip' and extract the app folder.
+* The script can be downloaded directly from the repo. Rename the iPA file from '.ipa' extension to '.zip' and extract the app folder.
 * File path of the iOS app's Mach-O binary is required as input. This file is located within the iOS application binary (.app directory) and would have the same name as the app itself.
 * Script can be run as follows.
 ```
