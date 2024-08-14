@@ -22,3 +22,7 @@ This script is developed to help us perform Reverse Engineering of an iOS applic
 ./otool_analyze.py
 ```
 * Ensure that any names of files/directories with spaces are enclosed in single quotes.
+
+### License
+
+This project is licensed under the Apache 2.0 License - see the LICENSE.md file for details
