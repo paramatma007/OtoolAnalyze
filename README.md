@@ -15,6 +15,7 @@ Following checks are performed by the script:
 6. Insecure Random Number Generator Functions
 7. Insecure Malloc Function
 8. Deprecated Objective-C APIs
+
 Refer to the links in the References section to get a detailed understanding of above checks.
 
 ### Dependencies
