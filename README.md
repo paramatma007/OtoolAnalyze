@@ -39,6 +39,7 @@ Refer to the links in the References section to get a detailed understanding of 
 
 * [Analyzing the IPA like a Pro](https://blog.certcube.com/analyzing-the-ipa-like-a-pro/)
 * [Basic Static Analysis iOS PT](https://book.hacktricks.xyz/mobile-pentesting/ios-pentesting#basic-static-analysis)
+* [OWASP Mobile App Security Testing Guide - Section on otool](https://mas.owasp.org/MASTG/tools/ios/MASTG-TOOL-0060/)
 
 ## License
 
