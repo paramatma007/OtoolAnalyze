@@ -23,6 +23,6 @@ This script is developed to help us perform Reverse Engineering of an iOS applic
 ```
 * Ensure that any names of files/directories with spaces are enclosed in single quotes.
 
-### License
+## License
 
 This project is licensed under the Apache 2.0 License - refer to the LICENSE.md file for further details.
