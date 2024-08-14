@@ -5,6 +5,15 @@ Hey Everyone! Welcome to my Tools repo. This is where I'll be sharing scripts th
 ## otool_analyze
 
 This script is developed to help us perform Reverse Engineering of an iOS application, specifically in static analysis of an IPA file for detecting common security misconfigurations. We can complete a small portion of a very complex area in Cyber Security through this script - iOS Application Penetration Testing.
+This script performs the following checks:
+1. Address Space Layout Randomization (ASLR)
+2. Stack Smashing Protection
+3. Automatic Reference Counting (ARC)
+4. Binary Encryption
+5. Weak Hashing Algorithms
+6. Insecure Random Number Generator Functions
+7. Insecure Malloc Function
+8. Deprecated Objective-C APIs
 
 ### Dependencies
 
@@ -22,6 +31,11 @@ This script is developed to help us perform Reverse Engineering of an iOS applic
 ./otool_analyze.py
 ```
 * Ensure that any names of files/directories with spaces are enclosed in single quotes.
+
+### References
+
+* [Analyzing the IPA like a Pro](https://blog.certcube.com/analyzing-the-ipa-like-a-pro/)
+* [Basic Static Analysis iOS PT](https://book.hacktricks.xyz/mobile-pentesting/ios-pentesting#basic-static-analysis)
 
 ## License
 
