@@ -37,6 +37,6 @@ Refer to the links in the References section to get a detailed understanding of 
 * [Basic Static Analysis iOS PT](https://book.hacktricks.xyz/mobile-pentesting/ios-pentesting#basic-static-analysis)
 * [OWASP Mobile App Security Testing Guide - Section on otool](https://mas.owasp.org/MASTG/tools/ios/MASTG-TOOL-0060/)
 
-## License
+### License
 
 This project is licensed under the Apache 2.0 License - refer to the LICENSE.md file for further details.
