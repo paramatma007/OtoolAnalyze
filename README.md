@@ -1,8 +1,4 @@
-# Tools
-
-Hey Everyone! Welcome to my Tools repo. This is where I'll be sharing scripts that I have developed to solve some common problems in the cyber security world. Note that each of these scripts serve a specific purpose and is intended to make it easier for cyber security professionals to perform their work.
-
-## otool_analyze
+#otool_analyze
 
 This script is developed to help us perform Reverse Engineering of an iOS application, specifically the static analysis of an IPA file for detecting common security misconfigurations. We can complete a small portion of a very complex area in Cyber Security through this script - iOS Application Penetration Testing.
 
