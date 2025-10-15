@@ -23,13 +23,12 @@ Refer to the links in the References section to get a detailed understanding of 
 
 ### Preparation and Execution
 
-* The script can be downloaded directly from the repo. Rename the iPA file from '.ipa' extension to '.zip' and extract the app folder.
-* File path of the iOS app's Mach-O binary is required as input. This file is located within the iOS application binary (.app directory) and would have the same name as the app itself.
+* The script can be downloaded directly from the repo.
+* Only the IPA file is needed for input. For ease of use, keep the iPA file and script in the same folder.
 * Script can be run as follows.
 ```
-./otool_analyze.py
+python otool_analyze.py <IPA file>
 ```
-* Ensure that any names of files/directories with spaces are enclosed in single quotes.
 
 ### References
 
