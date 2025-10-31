@@ -1,20 +1,53 @@
 #!/usr/bin/env python3
 import os.path
 import subprocess
+import importlib
 import sys
 import shlex
 
-print("\033[96m {}\033[00m".format(""""                                                                                                                                            
-  ,ad8888ba,                                      88            db                                  88                                      
- d8"'    `"8b     ,d                              88           d88b                                 88                                      
-d8'        `8b    88                              88          d8'`8b                                88                                      
-88          88  MM88MMM  ,adPPYba,    ,adPPYba,   88         d8'  `8b      8b,dPPYba,   ,adPPYYba,  88  8b       d8  888888888   ,adPPYba,  
-88          88    88    a8"     "8a  a8"     "8a  88        d8YaaaaY8b     88P'   `"8a  ""     `Y8  88  `8b     d8'       a8P"  a8P_____88  
-Y8,        ,8P    88    8b       d8  8b       d8  88       d8""""""""8b    88       88  ,adPPPPP88  88   `8b   d8'     ,d8P'    8PP"""""""  
- Y8a.    .a8P     88,   "8a,   ,a8"  "8a,   ,a8"  88      d8'        `8b   88       88  88,    ,88  88    `8b,d8'    ,d8"       "8b,   ,aa  
-  `"Y8888Y"'      "Y888  `"YbbdP"'    `"YbbdP"'   88     d8'          `8b  88       88  `"8bbdP"Y8  88      Y88'     888888888   `"Ybbd8"'  
-                                                                                                            d8'                             
-                                                                                                          d8'                              """))
+TOOL_NAME = "Otool Analyze"
+FONT = "big"
+
+
+def install_libraries(lib_name):
+    """Install additional libraries."""
+    print(f"Installing missing package: {lib_name}...")
+    try:
+        subprocess.run(
+            [sys.executable, "-m", "pip", "install", lib_name],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+        print(f"Successfully installed {lib_name}.")
+        return importlib.import_module(lib_name)
+    except subprocess.CalledProcessError as e:
+        print(f"Error installing {lib_name}:")
+        print(f"  {e.stderr.decode()}")
+        sys.exit(1)
+    except ImportError:
+        print(f"Error importing {lib_name} after installation.")
+        sys.exit(1)
+
+
+def print_banner(text, font):
+    """Display the banner."""
+    try:
+        import pyfiglet
+    except ImportError:
+        pyfiglet = install_libraries("pyfiglet")
+    try:
+        from blessed import Terminal
+    except ImportError:
+        install_libraries("blessed")
+        from blessed import Terminal  # Now the import should succeed
+    print("All dependencies are now imported successfully.")
+    term = Terminal()
+    current_width = term.width
+    margin = 4
+    art_text = pyfiglet.figlet_format(text, font=font, width=current_width - margin)
+    print(term.cyan(art_text))
+    print("\n" * 2)
 
 
 def check_args():
@@ -64,6 +97,7 @@ def check1(app_binary_path):
         print('[+] ASLR enabled:', "\033[92m {}\033[00m".format('Yes'), sep=' ')
     else:
         print('[+] ASLR enabled:', "\033[91m {}\033[00m".format('No'), sep=' ')
+    print('\n')
 
 
 def check2(app_binary_path):
@@ -73,6 +107,8 @@ def check2(app_binary_path):
         print('[+] Stack canaries enabled:', "\033[92m {}\033[00m".format('Yes'), sep=' ')
     else:
         print('[+] Stack canaries enabled:', "\033[91m {}\033[00m".format('No'), sep=' ')
+    print('\n')
+
 
 def check3(app_binary_path):
     # Check 3: Does the iOS app binary have ARC (Automatic Reference Counting) enabled?
@@ -81,6 +117,7 @@ def check3(app_binary_path):
         print('[+] ARC enabled:', "\033[92m {}\033[00m".format('Yes'), sep=' ')
     else:
         print('[+] ARC enabled:', "\033[91m {}\033[00m".format('No'), sep=' ')
+    print('\n')
 
 
 def check4(app_binary_path):
@@ -90,6 +127,7 @@ def check4(app_binary_path):
         print('[+] Binary Encrypted:', "\033[92m {}\033[00m".format('Yes'), sep=' ')
     else:
         print('[+] Binary Encrypted:', "\033[91m {}\033[00m".format('No'), sep=' ')
+    print('\n')
 
 
 def check5(app_binary_path):
@@ -103,10 +141,12 @@ def check5(app_binary_path):
         for check in hashes:
             if check:
                 alg.append(hashes[check])
-        print('   [-] Algorithms: ', "\033[92m {}\033[00m".format(', '.join(hashes)))
+        print('\n')
+        print('   [-] Algorithms: ', "\033[92m {}\033[00m".format(', '.join(alg)))
 
     else:
         print('[+] Weak Hashing Algorithms present:', "\033[91m {}\033[00m".format('No'), sep=' ')
+    print('\n')
 
 
 def check6(app_binary_path):
@@ -121,9 +161,11 @@ def check6(app_binary_path):
         for check in rand_gen:
             if check:
                 insec_rand.append(rand_gen[check])
+        print('\n')
         print('   [-] Functions: ', "\033[92m {}\033[00m".format(', '.join(insec_rand)))
     else:
         print('[+] Insecure Random Number Generator functions present:', "\033[91m {}\033[00m".format('No'), sep=' ')
+    print('\n')
 
 
 def check7(app_binary_path):
@@ -133,6 +175,7 @@ def check7(app_binary_path):
         print('[+] Insecure Malloc Function present:', "\033[92m {}\033[00m".format('Yes'), sep=' ')
     else:
         print('[+] Insecure Malloc Function present:', "\033[91m {}\033[00m".format('No'), sep=' ')
+    print('\n')
 
 
 def check8(app_binary_path):
@@ -158,12 +201,15 @@ def check8(app_binary_path):
         for check in funcs:
             if check:
                 vuln_funcs.append(funcs[check])
+        print('\n')
         print('   [-] Functions: ', "\033[92m {}\033[00m".format(', '.join(vuln_funcs)))
     else:
         print('[+] Insecure and Vulnerable Functions present:', "\033[91m {}\033[00m".format('No'), sep=' ')
+    print('\n')
 
 
 def main():
+    print_banner(TOOL_NAME, FONT)
     ipa = check_args()
     binary_path = path_retrieval(ipa)
     filecheck(binary_path)
