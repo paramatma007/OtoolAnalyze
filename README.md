@@ -29,6 +29,7 @@ Refer to the links in the References section to get a detailed understanding of 
 ```
 python otool_analyze.py <IPA file>
 ```
+![Tool Walkthrough](Tool_Walkthrough.gif)
 
 ### References
 
